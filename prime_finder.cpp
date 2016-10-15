@@ -1,8 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  prime_finder.cpp
- *
+ *       Filename:  prime_finder.cpp 
  *    Description:  Different algorithsm for finding prime numbers
  *
  *        Version:  1.0
@@ -17,6 +16,7 @@
 
 #include <iostream>
 #include <vector>
+#include <time.h>
 
 using namespace std;
 
@@ -26,11 +26,13 @@ void simple() {
 
 	int testing = 0;
 
+	int found = 0;
+
 	while(1) {
 
 		int pass = 0;
 
-		for(int i = 0; i < testing; i++) {
+		for(int i = 2; i < testing; i++) {
 
 			if((testing % i) == 0) {
 				pass = 1;
@@ -40,8 +42,12 @@ void simple() {
 
 		if(pass) {
 			prime_numbers.push_back(testing);
-			std::cout << testing << std::endl;
+			found++;
+			std::cout << "\r" << "Found:" << found;
 		}
+
+		if(found == 1000000)
+			return;
 
 		testing++;
 	}
@@ -51,27 +57,15 @@ void simple() {
 int main() {
 	std::cout << "Initialized Prime Finder" << std::endl;
 
-	int testing = 0;
+	time_t start = time(0);
 
-	while(1) {
-		int passed = 1;
 
-		for (int i = 2; i < testing; i++) {
-			if(testing % i == 0) {
-				passed = 0;
-				break;
-			}
-		}
+	simple();
 
-		if(passed) {
-			std::cout << "Prime: " << testing << std::endl;
-		}
 
-			testing++;
+	double seconds_since_start = difftime( time(0), start);
 
-	}
-
-	/* simple(); */
+	std::cout << "Time Passed: " << seconds_since_start << std::endl;
 
 	return 0;
 }
