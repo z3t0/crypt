@@ -1,5 +1,6 @@
 CC=gcc
+CPPC=g++
 CFLAGS=-I.
 
-prime_finder: prime_finder.o
-	$(CC) -o prime_finder prime_finder.o $(CFLAGS)
+default:: prime_finder.o
+	$(CPPC) -o prime_finder prime_finder.o $(CFLAGS)
