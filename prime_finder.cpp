@@ -17,6 +17,7 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
+#include <math.h>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ void simple() {
 
 		int pass = 0;
 
-		for(int i = 2; i < testing; i++) {
+		for(int i = 2; i < sqrt(testing); i++) {
 
 			if((testing % i) == 0) {
 				pass = 1;
@@ -46,7 +47,7 @@ void simple() {
 			std::cout << "\r" << "Found:" << found;
 		}
 
-		if(found == 1000000)
+		if(found == 1000000000)
 			return;
 
 		testing++;
